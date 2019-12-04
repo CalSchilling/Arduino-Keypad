@@ -15,14 +15,13 @@ char hexakeys[ROWS][COLS] = {
   {'0', '1', '2', '3', '4', '5', '6'},
   {'7', '8', '9', 'A', 'B', 'C', 'D'},
   {'E', 'F', 'G', 'H', 'I', 'J', 'K'},
-  {'L', 'M', 'N', 'O', 'P', 'Q', 'R'},
 };
 
 // Connect keypad rows and columns to the arduino micro pins.
 
 
 byte colPins[COLS] = { 0, 1, 2, 3, 4, 5, 6 };
-byte rowPins[ROWS] = { 7, 8, 9, 10 };
+byte rowPins[ROWS] = { 7, 8, 9 };
 String msg;
 
 // Create the Keypad
