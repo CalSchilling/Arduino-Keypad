@@ -1,0 +1,278 @@
+/* 
+ * Library required to run the keyboard/keypad which this is based on
+ * https://www.arduinolibraries.info/libraries/keypad
+ */
+#include <Keyboard.h>
+#include <Key.h>
+#include <Keypad.h>
+
+// 21 button MATRIX keymap. Some are unused. Gonna keep adding onto 
+
+
+const byte COLS = 4; // Four columns
+const byte ROWS = 3; // Three rows
+char hexakeys[ROWS][COLS] = {
+  {'0', '1', '2', '3'},
+  {'4', '5', '6', '7'},
+  {'8', '9', 'A', 'B'},
+};
+
+// Connect keypad rows and columns to the arduino micro pins.
+
+
+byte colPins[COLS] = { 0, 1, 2, 3 };
+byte rowPins[ROWS] = { 4, 5, 6 };
+String msg;
+
+// Create the Keypad
+
+Keypad customKeypad = Keypad( makeKeymap(hexakeys), rowPins, colPins, ROWS, COLS );
+
+
+// MAIN PROGRAM
+
+void setup()
+{
+  Serial.begin(9600);
+  msg = "";
+  pinMode(13, OUTPUT); // set the digital pin 13 as output to control a USB to turn on and off for the small USB powered fan
+}
+
+void loop()
+{
+
+  //keypad button press detection
+
+  if (customKeypad.getKeys())
+  {
+    for (int i = 0; i < LIST_MAX; i++) // Scan the whole keypad.
+    {
+      if ( customKeypad.key[i].stateChanged )   // Only find keys that have changed state.
+      {
+
+        //keypad button press instructions
+
+        if ( customKeypad.key[i].kchar == '0' ) // FUNCTION 13 
+          switch (customKeypad.key[i].kstate) {
+            case PRESSED:
+              msg = " PRESSED.";
+              Keyboard.write(KEY_F13);
+              break;
+            case HOLD:
+              msg = " HOLD.";
+              break;
+            case RELEASED:
+              msg = " RELEASED.";
+              Keyboard.release(KEY_F13);
+              break;
+            case IDLE:
+              msg = " IDLE.";
+              break;
+         }
+
+        if ( customKeypad.key[i].kchar == '1' ) // FUNCTION 14 
+          switch (customKeypad.key[i].kstate) {
+            case PRESSED:
+              msg = " PRESSED.";
+              Keyboard.write(KEY_F14);
+              break;
+            case HOLD:
+              msg = " HOLD.";
+              break;
+            case RELEASED:
+              msg = " RELEASED.";
+              Keyboard.release(KEY_F14);
+              break;
+            case IDLE:
+              msg = " IDLE.";
+              break;
+         }
+
+        if ( customKeypad.key[i].kchar == '2' ) // FUNCTION 15 
+          switch (customKeypad.key[i].kstate) {
+            case PRESSED:
+              msg = " PRESSED.";
+              Keyboard.write(KEY_F15);
+              break;
+            case HOLD:
+              msg = " HOLD.";
+              break;
+            case RELEASED:
+              msg = " RELEASED.";
+              Keyboard.release(KEY_F15);
+              break;
+            case IDLE:
+              msg = " IDLE.";
+              break;
+         }
+        
+        if ( customKeypad.key[i].kchar == '3' ) // FUNCTION 16 
+          switch (customKeypad.key[i].kstate) {
+            case PRESSED:
+              msg = " PRESSED.";
+              Keyboard.write(KEY_F16);
+              break;
+            case HOLD:
+              msg = " HOLD.";
+              break;
+            case RELEASED:
+              msg = " RELEASED.";
+              Keyboard.release(KEY_F16);
+              break;
+            case IDLE:
+              msg = " IDLE.";
+              break;
+         }
+        
+        if ( customKeypad.key[i].kchar == '4' ) // FUNCTION 17
+          switch (customKeypad.key[i].kstate) {
+            case PRESSED:
+              msg = " PRESSED.";
+              Keyboard.write(KEY_F17);
+              break;
+            case HOLD:
+              msg = " HOLD.";
+              break;
+            case RELEASED:
+              msg = " RELEASED.";
+              Keyboard.release(KEY_F17);
+              break;
+            case IDLE:
+              msg = " IDLE.";
+              break;
+         }
+        
+        if ( customKeypad.key[i].kchar == '5' ) // FUNCTION 18 
+          switch (customKeypad.key[i].kstate) {
+            case PRESSED:
+              msg = " PRESSED.";
+              Keyboard.write(KEY_F18);
+              break;
+            case HOLD:
+              msg = " HOLD.";
+              break;
+            case RELEASED:
+              msg = " RELEASED.";
+              Keyboard.release(KEY_F18);
+              break;
+            case IDLE:
+              msg = " IDLE.";
+              break;
+         }
+        
+        if ( customKeypad.key[i].kchar == '6' ) // FUNCTION 19 
+          switch (customKeypad.key[i].kstate) {
+            case PRESSED:
+              msg = " PRESSED.";
+              Keyboard.write(KEY_F19);
+              break;
+            case HOLD:
+              msg = " HOLD.";
+              break;
+            case RELEASED:
+              msg = " RELEASED.";
+              Keyboard.release(KEY_F19);
+              break;
+            case IDLE:
+              msg = " IDLE.";
+              break;
+         }
+        
+        if ( customKeypad.key[i].kchar == '7' ) // FUNCTION 20 
+          switch (customKeypad.key[i].kstate) {
+            case PRESSED:
+              msg = " PRESSED.";
+              Keyboard.write(KEY_F20);
+              break;
+            case HOLD:
+              msg = " HOLD.";
+              break;
+            case RELEASED:
+              msg = " RELEASED.";
+              Keyboard.release(KEY_F20);
+              break;
+            case IDLE:
+              msg = " IDLE.";
+              break;
+         }
+         
+        if ( customKeypad.key[i].kchar == '8' ) // FUNCTION 21 
+          switch (customKeypad.key[i].kstate) {
+            case PRESSED:
+              msg = " PRESSED.";
+              Keyboard.write(KEY_F21);
+              break;
+            case HOLD:
+              msg = " HOLD.";
+              break;
+            case RELEASED:
+              msg = " RELEASED.";
+              Keyboard.release(KEY_F21);
+              break;
+            case IDLE:
+              msg = " IDLE.";
+              break;
+         }
+              
+        if ( customKeypad.key[i].kchar == '9' ) // FUNCTION 22 
+          switch (customKeypad.key[i].kstate) {
+            case PRESSED:
+              msg = " PRESSED.";
+              Keyboard.write(KEY_F22);
+              break;
+            case HOLD:
+              msg = " HOLD.";
+              break;
+            case RELEASED:
+              msg = " RELEASED.";
+              Keyboard.release(KEY_F22);
+              break;
+            case IDLE:
+              msg = " IDLE.";
+              break;
+         }
+        
+        if ( customKeypad.key[i].kchar == 'A' ) // FUNCTION 23 
+          switch (customKeypad.key[i].kstate) {
+            case PRESSED:
+              msg = " PRESSED.";
+              Keyboard.write(KEY_F23);
+              break;
+            case HOLD:
+              msg = " HOLD.";
+              break;
+            case RELEASED:
+              msg = " RELEASED.";
+              Keyboard.release(KEY_F23);
+              break;
+            case IDLE:
+              msg = " IDLE.";
+              break;
+         }
+                
+        if ( customKeypad.key[i].kchar == 'B' ) // FUNCTION 24 
+          switch (customKeypad.key[i].kstate) {
+            case PRESSED:
+              msg = " PRESSED.";
+              Keyboard.write(KEY_F24);
+              break;
+            case HOLD:
+              msg = " HOLD.";
+              break;
+            case RELEASED:
+              msg = " RELEASED.";
+              Keyboard.release(KEY_F24);
+              break;
+            case IDLE:
+              msg = " IDLE.";
+              break;
+         }
+        
+        Serial.println();
+        Serial.print("Key ");
+        Serial.print(customKeypad.key[i].kchar);
+        Serial.println(msg);
+      }
+    }
+  }
+}
